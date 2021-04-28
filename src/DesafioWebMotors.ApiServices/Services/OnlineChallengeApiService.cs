@@ -28,5 +28,20 @@ namespace DesafioWebMotors.ApiServices.Services
 
             return marcas;
         }
+
+        public IEnumerable<Modelo> GetModelos(int idDaMarca)
+        {
+            var modelos = new List<Modelo>();
+            var request = new RestRequest("Model", Method.GET);
+            request.AddParameter("MakeID", idDaMarca.ToString());
+            var response = _restClient.Execute<List<Modelo>>(request);
+
+            if (response.IsSuccessful)
+            {
+                modelos = response.Data;
+            }
+
+            return modelos;
+        }
     }
 }
