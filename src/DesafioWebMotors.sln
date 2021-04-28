@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioWebMotors.Persistenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioWebMotors.ApiServices", "DesafioWebMotors.ApiServices\DesafioWebMotors.ApiServices.csproj", "{3D385AD4-7B0F-497D-A457-24771044ED78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioWebMotors.Application", "DesafioWebMotors.Application\DesafioWebMotors.Application.csproj", "{34FD7550-7C1F-4E73-A15A-4188FA1114C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3D385AD4-7B0F-497D-A457-24771044ED78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D385AD4-7B0F-497D-A457-24771044ED78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D385AD4-7B0F-497D-A457-24771044ED78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FD7550-7C1F-4E73-A15A-4188FA1114C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FD7550-7C1F-4E73-A15A-4188FA1114C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FD7550-7C1F-4E73-A15A-4188FA1114C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FD7550-7C1F-4E73-A15A-4188FA1114C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
