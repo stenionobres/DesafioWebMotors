@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioWebMotors.Client", "DesafioWebMotors.Client\DesafioWebMotors.Client.csproj", "{CA92A362-6DBA-4221-B14D-C35F5EC1BDA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioWebMotors.Persistence", "DesafioWebMotors.Persistencia\DesafioWebMotors.Persistence.csproj", "{B720B7E1-574D-466D-B6F1-14883F3FD795}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioWebMotors.Persistence", "DesafioWebMotors.Persistence\DesafioWebMotors.Persistence.csproj", "{B720B7E1-574D-466D-B6F1-14883F3FD795}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
