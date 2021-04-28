@@ -43,5 +43,20 @@ namespace DesafioWebMotors.ApiServices.Services
 
             return modelos;
         }
+
+        public IEnumerable<Versao> GetVersoes(int idDoModelo)
+        {
+            var versoes = new List<Versao>();
+            var request = new RestRequest("Version", Method.GET);
+            request.AddParameter("ModelID", idDoModelo);
+            var response = _restClient.Execute<List<Versao>>(request);
+
+            if (response.IsSuccessful)
+            {
+                versoes = response.Data;
+            }
+
+            return versoes;
+        }
     }
 }
