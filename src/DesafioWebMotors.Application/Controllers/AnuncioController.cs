@@ -28,5 +28,12 @@ namespace DesafioWebMotors.Application.Controllers
             else
                 return View(_anuncioService.GetAnuncio(id));
         }
+
+        public IActionResult Delete(int id)
+        {
+            _anuncioService.DeleteAnuncio(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

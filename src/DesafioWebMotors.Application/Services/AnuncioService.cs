@@ -45,5 +45,12 @@ namespace DesafioWebMotors.Application.Services
                 Observacao = anuncioFromDatabase.Observacao
             };
         }
+
+        public void DeleteAnuncio(int id)
+        {
+            var anuncioFromDatabase = _anuncioMapper.Get(id);
+
+            _anuncioMapper.Delete(anuncioFromDatabase);
+        }
     }
 }
