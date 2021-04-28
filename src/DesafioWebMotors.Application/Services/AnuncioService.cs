@@ -32,7 +32,18 @@ namespace DesafioWebMotors.Application.Services
 
         public AnuncioWebMotors GetAnuncio(int id)
         {
-            return new AnuncioWebMotors();
+            var anuncioFromDatabase = _anuncioMapper.Get(id);
+
+            return new AnuncioWebMotors()
+            {
+                Id = anuncioFromDatabase.Id,
+                Marca = anuncioFromDatabase.Marca,
+                Modelo = anuncioFromDatabase.Modelo,
+                Versao = anuncioFromDatabase.Versao,
+                Ano = anuncioFromDatabase.Ano,
+                Quilometragem = anuncioFromDatabase.Quilometragem,
+                Observacao = anuncioFromDatabase.Observacao
+            };
         }
     }
 }
