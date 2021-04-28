@@ -55,7 +55,7 @@ namespace DesafioWebMotors.Application
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Anuncio}/{action=Index}/{id?}");
             });
         }
     }
