@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace DesafioWebMotors.Persistence.DataTransferObjects
 {
     public class AnuncioWebMotors
