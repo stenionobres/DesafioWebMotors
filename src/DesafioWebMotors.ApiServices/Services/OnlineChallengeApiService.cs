@@ -33,7 +33,7 @@ namespace DesafioWebMotors.ApiServices.Services
         {
             var modelos = new List<Modelo>();
             var request = new RestRequest("Model", Method.GET);
-            request.AddParameter("MakeID", idDaMarca.ToString());
+            request.AddParameter("MakeID", idDaMarca);
             var response = _restClient.Execute<List<Modelo>>(request);
 
             if (response.IsSuccessful)
