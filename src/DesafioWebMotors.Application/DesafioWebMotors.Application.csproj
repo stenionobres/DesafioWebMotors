@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DesafioWebMotors.ApiServices\DesafioWebMotors.ApiServices.csproj" />
     <ProjectReference Include="..\DesafioWebMotors.Persistence\DesafioWebMotors.Persistence.csproj" />
   </ItemGroup>
 

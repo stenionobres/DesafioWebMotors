@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using DesafioWebMotors.Application.Models;
 using DesafioWebMotors.Application.Services;
+using DesafioWebMotors.ApiServices.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DesafioWebMotors.Application.Controllers
 {
     public class AnuncioController : Controller
     {
         private readonly AnuncioService _anuncioService;
+        private readonly OnlineChallengeApiService _onlineChallengeApiService;
 
-        public AnuncioController(AnuncioService anuncioService)
+        public AnuncioController(AnuncioService anuncioService, OnlineChallengeApiService onlineChallengeApiService)
         {
             _anuncioService = anuncioService;
+            _onlineChallengeApiService = onlineChallengeApiService;
         }
 
         public IActionResult Index()
@@ -23,10 +27,31 @@ namespace DesafioWebMotors.Application.Controllers
 
         public IActionResult AddOrEdit(int id = 0)
         {
+            ViewBag.Marcas = _onlineChallengeApiService.GetMarcas().Select(m => new SelectListItem()
+            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+
+            ViewBag.Modelos = _onlineChallengeApiService.GetModelos(idDaMarca: 1).Select(m => new SelectListItem()
+            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+
+            ViewBag.Versoes = _onlineChallengeApiService.GetVersoes(idDoModelo: 1).Select(m => new SelectListItem()
+            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+
             if (id == 0)
                 return View(new AnuncioWebMotors());
             else
                 return View(_anuncioService.GetAnuncio(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddOrEdit(AnuncioWebMotors anuncioWebMotors)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int id)
@@ -34,6 +59,22 @@ namespace DesafioWebMotors.Application.Controllers
             _anuncioService.DeleteAnuncio(id);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult CarregarModelos(int idDaMarca)
+        {
+            var modelosFromApi = _onlineChallengeApiService.GetModelos(idDaMarca: idDaMarca);
+            dynamic modelosForView = modelosFromApi.Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+
+            return Json(modelosForView);
+        }
+
+        public IActionResult CarregarVersoes(int idDoModelo)
+        {
+            var versoesFromApi = _onlineChallengeApiService.GetVersoes(idDoModelo: idDoModelo);
+            dynamic versoesForView = versoesFromApi.Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+
+            return Json(versoesForView);
         }
     }
 }

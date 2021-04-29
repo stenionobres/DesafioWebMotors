@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DesafioWebMotors.Application.Services;
 using DesafioWebMotors.Persistence.Mappers;
+using DesafioWebMotors.ApiServices.Services;
 
 namespace DesafioWebMotors.Application
 {
@@ -29,6 +30,7 @@ namespace DesafioWebMotors.Application
 
             services.AddTransient<AnuncioService>();
             services.AddTransient<AnuncioWebMotorsMapper>();
+            services.AddTransient<OnlineChallengeApiService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
