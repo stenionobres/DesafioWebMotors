@@ -61,6 +61,20 @@ namespace DesafioWebMotors.Application.Services
             _anuncioMapper.Save(anuncioForDatabase);
         }
 
+        public void UpdateAnuncio(AnuncioWebMotors anuncioWebMotors)
+        {
+            var anuncioFromDatabase = _anuncioMapper.Get(anuncioWebMotors.Id);
+
+            anuncioFromDatabase.Marca = anuncioWebMotors.Marca.Split("#")[1];
+            anuncioFromDatabase.Modelo = anuncioWebMotors.Modelo.Split("#")[1];
+            anuncioFromDatabase.Versao = anuncioWebMotors.Versao.Split("#")[1];
+            anuncioFromDatabase.Ano = anuncioWebMotors.Ano;
+            anuncioFromDatabase.Quilometragem = anuncioWebMotors.Quilometragem;
+            anuncioFromDatabase.Observacao = anuncioWebMotors.Observacao;
+
+            _anuncioMapper.Update(anuncioFromDatabase);
+        }
+
         public void DeleteAnuncio(int id)
         {
             var anuncioFromDatabase = _anuncioMapper.Get(id);
