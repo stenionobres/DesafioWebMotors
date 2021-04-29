@@ -72,7 +72,8 @@
     });
 
     function CarregaModelos() {
-        var idDaMarca = $("#Marca").val();
+        var value = $("#Marca").val();
+        var idDaMarca = value.split("#")[0];
 
         $.ajax({
             url: "/Anuncio/CarregarModelos",
@@ -91,7 +92,8 @@
     }
 
     function CarregaVersoes() {
-        var idDoModelo = $("#Modelo").val();
+        var value = $("#Modelo").val();
+        var idDoModelo = value.split("#")[0];
 
         $.ajax({
             url: "/Anuncio/CarregarVersoes",

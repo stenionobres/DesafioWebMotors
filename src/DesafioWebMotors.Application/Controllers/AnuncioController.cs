@@ -28,13 +28,13 @@ namespace DesafioWebMotors.Application.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewBag.Marcas = _onlineChallengeApiService.GetMarcas().Select(m => new SelectListItem()
-            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+            { Text = m.Name, Value = string.Join("#", m.ID.ToString(), m.Name) });
 
             ViewBag.Modelos = _onlineChallengeApiService.GetModelos(idDaMarca: 1).Select(m => new SelectListItem()
-            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+            { Text = m.Name, Value = string.Join("#", m.ID.ToString(), m.Name) });
 
             ViewBag.Versoes = _onlineChallengeApiService.GetVersoes(idDoModelo: 1).Select(m => new SelectListItem()
-            { Text = m.Name, Value = m.ID.ToString() }).ToList();
+            { Text = m.Name, Value = string.Join("#", m.ID.ToString(), m.Name) });
 
             if (id == 0)
                 return View(new AnuncioWebMotors());
@@ -64,7 +64,7 @@ namespace DesafioWebMotors.Application.Controllers
         public IActionResult CarregarModelos(int idDaMarca)
         {
             var modelosFromApi = _onlineChallengeApiService.GetModelos(idDaMarca: idDaMarca);
-            dynamic modelosForView = modelosFromApi.Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+            dynamic modelosForView = modelosFromApi.Select(m => new { Text = m.Name, Value = string.Join("#", m.ID.ToString(), m.Name) });
 
             return Json(modelosForView);
         }
@@ -72,7 +72,7 @@ namespace DesafioWebMotors.Application.Controllers
         public IActionResult CarregarVersoes(int idDoModelo)
         {
             var versoesFromApi = _onlineChallengeApiService.GetVersoes(idDoModelo: idDoModelo);
-            dynamic versoesForView = versoesFromApi.Select(m => new { Text = m.Name, Value = m.ID.ToString() });
+            dynamic versoesForView = versoesFromApi.Select(m => new { Text = m.Name, Value = string.Join("#", m.ID.ToString(), m.Name) });
 
             return Json(versoesForView);
         }
