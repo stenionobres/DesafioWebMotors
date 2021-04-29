@@ -46,6 +46,21 @@ namespace DesafioWebMotors.Application.Services
             };
         }
 
+        public void SaveAnuncio(AnuncioWebMotors anuncioWebMotors)
+        {
+            var anuncioForDatabase = new Persistence.DataTransferObjects.AnuncioWebMotors()
+            {
+                Marca = anuncioWebMotors.Marca.Split("#")[1],
+                Modelo = anuncioWebMotors.Modelo.Split("#")[1],
+                Versao = anuncioWebMotors.Versao.Split("#")[1],
+                Ano = anuncioWebMotors.Ano,
+                Quilometragem = anuncioWebMotors.Quilometragem,
+                Observacao = anuncioWebMotors.Observacao
+            };
+
+            _anuncioMapper.Save(anuncioForDatabase);
+        }
+
         public void DeleteAnuncio(int id)
         {
             var anuncioFromDatabase = _anuncioMapper.Get(id);

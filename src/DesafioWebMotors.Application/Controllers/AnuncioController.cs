@@ -48,7 +48,7 @@ namespace DesafioWebMotors.Application.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                _anuncioService.SaveAnuncio(anuncioWebMotors);
             }
 
             return RedirectToAction(nameof(Index));
